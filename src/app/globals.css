@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f6fb;
+  --foreground: #1b2433;
+  --muted: #5d6a7c;
+  --surface: #ffffff;
+  --border: #d7e0ec;
+  --accent: #2f5d8a;
+  --accent-hover: #244a6e;
+  --accent-soft: #e8f0f8;
+  --shadow: 0 10px 28px rgba(31, 48, 71, 0.08);
+  --radius: 14px;
 }
 
 @theme inline {
@@ -12,15 +20,243 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  background:
+    radial-gradient(circle at 88% -10%, #dbe7f5 0%, transparent 42%),
+    radial-gradient(circle at 8% 110%, #eef3f9 0%, transparent 36%),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.hero,
+.page {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem;
+}
+
+.page {
+  max-width: 28rem;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0.7rem 0 0;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.lead {
+  max-width: 36rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+
+.card {
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.card h1 {
+  font-size: 1.4rem;
+}
+
+.card p,
+.hint {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.field {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  height: 2.6rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fbfdff;
+  color: var(--foreground);
+  font: inherit;
+}
+
+.input:focus {
+  outline: 2px solid #9cb6d4;
+  outline-offset: 1px;
+  background: #fff;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6rem;
+  padding: 0 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-soft);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 1.15rem;
+}
+
+.center-note {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.center-note a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.dashboard header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard header p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
